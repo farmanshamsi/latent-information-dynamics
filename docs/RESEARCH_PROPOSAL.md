@@ -24,13 +24,13 @@ If these variables evolve before a corresponding Bitcoin price adjustment, then 
 
 The project therefore studies the process
 
-\[
+```math
 \text{Information}
 \rightarrow
 \text{Market State}
 \rightarrow
 \text{Price Formation}
-\]
+```
 
 rather than treating price history itself as the sole forecasting mechanism.
 
@@ -66,41 +66,41 @@ The project will investigate:
 
 ## 4. Main Hypothesis
 
-Define the future Bitcoin return over horizon \(h\) as
+Define the future Bitcoin return over horizon $h$ as
 
-\[
+```math
 r_{t,t+h}
 =
 \log
 \left(
 \frac{S_{t+h}}{S_t}
 \right).
-\]
+```
 
 The directional target is
 
-\[
+```math
 Y_{t,h}
 =
 \mathbf{1}
 \left(
 r_{t,t+h}>\tau_h
 \right),
-\]
+```
 
-where \(\tau_h\) may be zero or an economically meaningful threshold incorporating noise and trading costs.
+where $\tau_h$ may be zero or an economically meaningful threshold incorporating noise and trading costs.
 
 Let
 
-\[
+```math
 \mathcal{P}_t
-\]
+```
 
 denote information derived primarily from Bitcoin's historical price.
 
 Let
 
-\[
+```math
 \mathcal{I}_t
 =
 \{
@@ -110,31 +110,31 @@ Let
 \mathcal{X}_t,
 \mathcal{V}_t
 \}
-\]
+```
 
 denote the non-price information state.
 
 The central hypothesis is
 
-\[
+```math
 H_1:
 \quad
 P(Y_{t,h}=1\mid\mathcal{I}_t)
-\]
+```
 
 contains incremental predictive information beyond
 
-\[
+```math
 P(Y_{t,h}=1\mid\mathcal{P}_t).
-\]
+```
 
 Operationally, we test whether
 
-\[
+```math
 \mathcal{M}_I
 \succ
 \mathcal{M}_P
-\]
+```
 
 under strictly out-of-sample evaluation.
 
@@ -239,11 +239,11 @@ Observed variables may be noisy measurements of a smaller hidden information sta
 
 A general representation is
 
-\[
+```math
 Z_t
 =
 f(\mathcal{I}_t).
-\]
+```
 
 Candidate approaches include:
 
@@ -282,29 +282,29 @@ More complex models may subsequently include:
 
 A possible multimodal structure is
 
-\[
+```math
 f_O(\mathcal{O}_t)
 \rightarrow p_t^O
-\]
+```
 
-\[
+```math
 f_N(\mathcal{N}_t)
 \rightarrow p_t^N
-\]
+```
 
-\[
+```math
 f_C(\mathcal{C}_t)
 \rightarrow p_t^C
-\]
+```
 
-\[
+```math
 f_X(\mathcal{X}_t)
 \rightarrow p_t^X
-\]
+```
 
 followed by
 
-\[
+```math
 P(Y_{t,h}=1)
 =
 g
@@ -314,7 +314,7 @@ p_t^N,
 p_t^C,
 p_t^X
 \right).
-\]
+```
 
 This permits each information source to be modelled according to its own structure before information fusion.
 
@@ -324,25 +324,25 @@ This permits each information source to be modelled according to its own structu
 
 At minimum, the empirical study will compare:
 
-\[
+```math
 \mathcal{M}_P
-\]
+```
 
 Price-only benchmark
 
 against
 
-\[
+```math
 \mathcal{M}_I
-\]
+```
 
 Information-only model
 
 and
 
-\[
+```math
 \mathcal{M}_{I+P}.
-\]
+```
 
 Combined information and price model.
 
@@ -360,17 +360,17 @@ Additional single-domain benchmarks will isolate:
 
 The contribution of each information block will be evaluated through ablation.
 
-For information block \(j\),
+For information block $j$,
 
-\[
+```math
 \Delta_j
 =
 L(\mathcal{M}_{I\setminus j})
 -
 L(\mathcal{M}_I),
-\]
+```
 
-where \(L\) is an appropriate predictive loss.
+where $L$ is an appropriate predictive loss.
 
 This allows the project to answer not only whether the full model works, but why.
 
@@ -380,9 +380,9 @@ This allows the project to answer not only whether the full model works, but why
 
 All features must satisfy
 
-\[
+```math
 X_t \in \mathcal{F}_t,
-\]
+```
 
 meaning that each variable used for prediction must have been observable at the prediction timestamp.
 
@@ -436,11 +436,11 @@ The hypothesis is not that non-price data must predict Bitcoin.
 
 The project explicitly permits the result
 
-\[
+```math
 \mathcal{M}_I
 \not\succ
 \mathcal{M}_P.
-\]
+```
 
 Such a finding would suggest that publicly observable information is incorporated into Bitcoin prices sufficiently rapidly that the selected information channels provide little incremental forecasting power.
 

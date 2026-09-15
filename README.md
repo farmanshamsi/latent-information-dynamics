@@ -32,22 +32,22 @@ Can information observable prior to a Bitcoin price adjustment — including mar
 
 ## Core Hypothesis
 
-Let the future directional target over horizon \(h\) be
+Let the future directional target over horizon $h$ be
 
-\[
+```math
 Y_{t,h}
 =
 \mathbf{1}
 \left[
 \log\left(\frac{S_{t+h}}{S_t}\right) > \tau_h
 \right].
-\]
+```
 
 We compare three information structures.
 
 ### Price-only model
 
-\[
+```math
 \mathcal{M}_{P}
 =
 P
@@ -56,13 +56,13 @@ Y_{t,h}=1
 \mid
 \mathcal{P}_t
 \right),
-\]
+```
 
-where \(\mathcal{P}_t\) represents information derived primarily from Bitcoin's own historical price process.
+where $\mathcal{P}_t$ represents information derived primarily from Bitcoin's own historical price process.
 
 ### Information model
 
-\[
+```math
 \mathcal{M}_{I}
 =
 P
@@ -71,11 +71,11 @@ Y_{t,h}=1
 \mid
 \mathcal{I}_t
 \right),
-\]
+```
 
 where
 
-\[
+```math
 \mathcal{I}_t
 =
 \{
@@ -85,19 +85,19 @@ where
 \mathcal{X}_t,
 \mathcal{V}_t
 \}.
-\]
+```
 
 The components represent:
 
-- \(\mathcal{O}_t\): market microstructure and order-flow state,
-- \(\mathcal{N}_t\): news and textual information state,
-- \(\mathcal{C}_t\): blockchain and on-chain state,
-- \(\mathcal{X}_t\): cross-market and macro-financial state,
-- \(\mathcal{V}_t\): latent volatility and market-regime state.
+- $\mathcal{O}_t$: market microstructure and order-flow state,
+- $\mathcal{N}_t$: news and textual information state,
+- $\mathcal{C}_t$: blockchain and on-chain state,
+- $\mathcal{X}_t$: cross-market and macro-financial state,
+- $\mathcal{V}_t$: latent volatility and market-regime state.
 
 ### Combined model
 
-\[
+```math
 \mathcal{M}_{I+P}
 =
 P
@@ -106,21 +106,21 @@ Y_{t,h}=1
 \mid
 \mathcal{I}_t,\mathcal{P}_t
 \right).
-\]
+```
 
 The central empirical question is therefore whether
 
-\[
+```math
 \mathcal{M}_{I}
 \succ
 \mathcal{M}_{P}
-\]
+```
 
 out of sample, and whether
 
-\[
+```math
 \mathcal{M}_{I+P}
-\]
+```
 
 contains economically meaningful incremental information beyond either representation alone.
 
@@ -130,7 +130,7 @@ contains economically meaningful incremental information beyond either represent
 
 The proposed research architecture is
 
-\[
+```math
 \text{Information Generation}
 \rightarrow
 \text{Information Transmission}
@@ -140,7 +140,7 @@ The proposed research architecture is
 \text{Price Formation}
 \rightarrow
 \text{Observed Return}.
-\]
+```
 
 The aim is not to assume that every data source predicts price.
 
@@ -243,7 +243,7 @@ The observable information channels may be treated as noisy measurements of a lo
 
 A general representation is
 
-\[
+```math
 Z_t
 =
 f
@@ -254,9 +254,9 @@ f
 \mathcal{X}_t,
 \mathcal{V}_t
 \right),
-\]
+```
 
-where \(Z_t\) represents the latent information state.
+where $Z_t$ represents the latent information state.
 
 Candidate approaches include:
 
@@ -294,7 +294,7 @@ More complex models may include:
 
 A possible architecture is
 
-\[
+```math
 p_t^{(O)},\;
 p_t^{(N)},\;
 p_t^{(C)},\;
@@ -303,7 +303,7 @@ p_t^{(X)}
 g(\cdot)
 \rightarrow
 P(Y_{t,h}=1),
-\]
+```
 
 where specialist models estimate information from separate domains and a meta-model performs information fusion.
 
@@ -325,7 +325,7 @@ Ablation studies will test the incremental value of each information source.
 
 For example,
 
-\[
+```math
 \Delta_j
 =
 L
@@ -337,9 +337,9 @@ L
 \left(
 \mathcal{M}_{I}
 \right)
-\]
+```
 
-measures the predictive contribution of information block \(j\).
+measures the predictive contribution of information block $j$.
 
 ---
 
