@@ -1,0 +1,20 @@
+{
+  "dataset_id": "binance-btcusdt-5m-2020-2025",
+  "source": "Binance Spot",
+  "symbol": "BTCUSDT",
+  "interval": "5m",
+  "start_time": "2020-01-01T00:00:00+00:00",
+  "end_time_exclusive": "2026-01-01T00:00:00+00:00",
+  "monthly_files": 72,
+  "expected_slots": 631296,
+  "observed_bars": 630830,
+  "missing_source_slots": 466,
+  "irregular_close_bars": 8,
+  "duplicate_bars": 0,
+  "out_of_order_bars": 0,
+  "invalid_rows": 0,
+  "missing_data_policy": "Raw source gaps are preserved; no interpolation or forward filling is applied.",
+  "development_status": "Frozen development dataset. Calendar year 2026 excluded from initial model development.",
+  "checksum_manifest": "data/manifests/binance_btcusdt_5m_2020_2025.sha256",
+  "dataset_fingerprint_sha256": "cee5a29b95ff8545a1e3413fa3febaf2ed4cdd0023a823d498dfa2e54fcaf2d0"
+}
