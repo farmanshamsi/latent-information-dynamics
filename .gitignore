@@ -1,3 +1,8 @@
 
 data/raw/
 data/derived/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+*.bak
