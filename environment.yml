@@ -1,0 +1,14 @@
+name: latent-info
+
+channels:
+  - defaults
+
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - numpy==1.26.4
+      - pandas==3.0.6
+      - scikit-learn==1.9.1
+      - pytest==9.1.1
+      - torch==2.2.2
