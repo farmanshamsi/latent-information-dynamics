@@ -7,6 +7,7 @@ from latent_information_dynamics.models.latent.multimodal import (
     LatentModelOutput,
     ModalityEncoder,
     MultimodalLatentModel,
+    PriceLatentModel,
 )
 from latent_information_dynamics.models.latent.training import (
     TrainingStepResult,
@@ -20,6 +21,7 @@ __all__ = [
     "LatentModelOutput",
     "ModalityEncoder",
     "MultimodalLatentModel",
+    "PriceLatentModel",
     "TrainingStepResult",
     "binary_training_step",
     "capture_gradient_snapshot",

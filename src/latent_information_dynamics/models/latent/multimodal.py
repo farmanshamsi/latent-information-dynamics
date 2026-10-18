@@ -307,3 +307,206 @@ class MultimodalLatentModel(nn.Module):
         return torch.sigmoid(
             logits
         )
+
+
+class PriceLatentModel(nn.Module):
+    """
+    Price-only nonlinear control.
+
+    It deliberately retains the same latent depth used by
+    the multimodal model:
+
+        R^11 -> R^16 -> R^4
+        R^4  -> R^8  -> R^4
+        R^4  -> binary logit
+
+    This lets us distinguish nonlinear-training effects from
+    incremental trade-flow effects.
+    """
+
+    def __init__(
+        self,
+        *,
+        price_input_dim: int = 11,
+        price_hidden_dim: int = 16,
+        modality_latent_dim: int = 4,
+        latent_hidden_dim: int = 8,
+        latent_dim: int = 4,
+    ) -> None:
+        super().__init__()
+
+        self.price_encoder = ModalityEncoder(
+            input_dim=price_input_dim,
+            hidden_dim=price_hidden_dim,
+            latent_dim=modality_latent_dim,
+        )
+
+        self.latent_adapter = nn.Sequential(
+            nn.Linear(
+                modality_latent_dim,
+                latent_hidden_dim,
+            ),
+            nn.SiLU(),
+            nn.Linear(
+                latent_hidden_dim,
+                latent_dim,
+            ),
+        )
+
+        self.prediction_head = nn.Linear(
+            latent_dim,
+            1,
+        )
+
+    def forward_with_state(
+        self,
+        price_x: Tensor,
+    ) -> tuple[
+        Tensor,
+        Tensor,
+        Tensor,
+    ]:
+        price_state = self.price_encoder(
+            price_x
+        )
+
+        latent_state = self.latent_adapter(
+            price_state
+        )
+
+        logits = (
+            self.prediction_head(
+                latent_state
+            )
+            .squeeze(
+                dim=-1
+            )
+        )
+
+        return (
+            logits,
+            price_state,
+            latent_state,
+        )
+
+    def forward(
+        self,
+        price_x: Tensor,
+    ) -> Tensor:
+        logits, _, _ = (
+            self.forward_with_state(
+                price_x
+            )
+        )
+
+        return logits
+
+    @torch.no_grad()
+    def predict_proba(
+        self,
+        price_x: Tensor,
+    ) -> Tensor:
+        return torch.sigmoid(
+            self.forward(
+                price_x
+            )
+        )
+
+
+class PriceLatentModel(nn.Module):
+    """
+    Price-only nonlinear control.
+
+    Architecture:
+        R^11 -> R^16 -> R^4
+        R^4  -> R^8  -> R^4
+        R^4  -> binary logit
+    """
+
+    def __init__(
+        self,
+        *,
+        price_input_dim: int = 11,
+        price_hidden_dim: int = 16,
+        modality_latent_dim: int = 4,
+        latent_hidden_dim: int = 8,
+        latent_dim: int = 4,
+    ) -> None:
+        super().__init__()
+
+        self.price_encoder = ModalityEncoder(
+            input_dim=price_input_dim,
+            hidden_dim=price_hidden_dim,
+            latent_dim=modality_latent_dim,
+        )
+
+        self.latent_adapter = nn.Sequential(
+            nn.Linear(
+                modality_latent_dim,
+                latent_hidden_dim,
+            ),
+            nn.SiLU(),
+            nn.Linear(
+                latent_hidden_dim,
+                latent_dim,
+            ),
+        )
+
+        self.prediction_head = nn.Linear(
+            latent_dim,
+            1,
+        )
+
+    def forward_with_state(
+        self,
+        price_x: Tensor,
+    ) -> tuple[
+        Tensor,
+        Tensor,
+        Tensor,
+    ]:
+        price_state = self.price_encoder(
+            price_x
+        )
+
+        latent_state = self.latent_adapter(
+            price_state
+        )
+
+        logits = (
+            self.prediction_head(
+                latent_state
+            )
+            .squeeze(
+                dim=-1
+            )
+        )
+
+        return (
+            logits,
+            price_state,
+            latent_state,
+        )
+
+    def forward(
+        self,
+        price_x: Tensor,
+    ) -> Tensor:
+        logits, _, _ = (
+            self.forward_with_state(
+                price_x
+            )
+        )
+
+        return logits
+
+    @torch.no_grad()
+    def predict_proba(
+        self,
+        price_x: Tensor,
+    ) -> Tensor:
+        return torch.sigmoid(
+            self.forward(
+                price_x
+            )
+        )

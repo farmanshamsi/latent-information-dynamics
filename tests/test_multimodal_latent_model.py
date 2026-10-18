@@ -170,3 +170,79 @@ def test_initialization_is_reproducible():
         first_logits,
         second_logits,
     )
+
+
+def test_price_latent_control_shapes():
+    from latent_information_dynamics.models.latent import (
+        PriceLatentModel,
+    )
+
+    set_research_seed(
+        29
+    )
+
+    model = PriceLatentModel()
+
+    price_x = torch.randn(
+        32,
+        11,
+    )
+
+    (
+        logits,
+        price_state,
+        latent_state,
+    ) = model.forward_with_state(
+        price_x
+    )
+
+    assert logits.shape == (32,)
+
+    assert price_state.shape == (
+        32,
+        4,
+    )
+
+    assert latent_state.shape == (
+        32,
+        4,
+    )
+
+
+def test_price_latent_control_shapes():
+    from latent_information_dynamics.models.latent import (
+        PriceLatentModel,
+    )
+
+    set_research_seed(
+        29
+    )
+
+    model = PriceLatentModel()
+
+    price_x = torch.randn(
+        32,
+        11,
+    )
+
+    (
+        logits,
+        price_state,
+        latent_state,
+    ) = model.forward_with_state(
+        price_x
+    )
+
+    assert logits.shape == (
+        32,
+    )
+
+    assert price_state.shape == (
+        32,
+        4,
+    )
+
+    assert latent_state.shape == (
+        32,
+        4,
+    )
