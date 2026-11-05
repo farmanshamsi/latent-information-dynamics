@@ -1,0 +1,65 @@
+{
+  "dataset_id": "binance-btcusdt-5m-holdout-2026-h1",
+  "source": "Binance Spot",
+  "symbol": "BTCUSDT",
+  "interval": "5m",
+  "start_time": "2026-01-01T00:00:00+00:00",
+  "end_time_exclusive": "2026-07-01T00:00:00+00:00",
+  "monthly_files": 6,
+  "observed_bars": 52128,
+  "expected_bars": 52128,
+  "missing_source_slots": 0,
+  "duplicate_bars": 0,
+  "out_of_order_bars": 0,
+  "invalid_rows": 0,
+  "irregular_close_bars": 0,
+  "pre_holdout_git_checkpoint": "35140c1",
+  "status": "Frozen confirmation dataset. No model selection or tuning permitted using this sample.",
+  "missing_data_policy": "Raw source gaps are preserved; no interpolation or forward filling is applied.",
+  "checksum_manifest": "data/manifests/binance_btcusdt_5m_holdout_2026.sha256",
+  "dataset_fingerprint_sha256": "c53a65292102d543f7bab6ccd44ffca5520d842aab1b7cf0fb2356a31e5f8722",
+  "files": [
+    {
+      "file": "data/raw/binance/BTCUSDT/5m/2026-01.csv",
+      "rows": 8928,
+      "first_open_time": "2026-01-01T00:00:00+00:00",
+      "last_open_time": "2026-01-31T23:55:00+00:00",
+      "sha256": "cd08602e74c4701921b5f7c51c95d9916edac2261d2c38bb59e3f0d9b453fd45"
+    },
+    {
+      "file": "data/raw/binance/BTCUSDT/5m/2026-02.csv",
+      "rows": 8064,
+      "first_open_time": "2026-02-01T00:00:00+00:00",
+      "last_open_time": "2026-02-28T23:55:00+00:00",
+      "sha256": "6f42c979b1be542e1322058825683bae2ae026e802f7ab3a7e0097d1224285f5"
+    },
+    {
+      "file": "data/raw/binance/BTCUSDT/5m/2026-03.csv",
+      "rows": 8928,
+      "first_open_time": "2026-03-01T00:00:00+00:00",
+      "last_open_time": "2026-03-31T23:55:00+00:00",
+      "sha256": "4b786ac620a5d953aaa050f6ecf7a5f81aa8b2641817e1718b5981176e0d00a3"
+    },
+    {
+      "file": "data/raw/binance/BTCUSDT/5m/2026-04.csv",
+      "rows": 8640,
+      "first_open_time": "2026-04-01T00:00:00+00:00",
+      "last_open_time": "2026-04-30T23:55:00+00:00",
+      "sha256": "2e25245fdcca541ccaae9b12bdcd4104746febe7217b715eac7e39581b9012a0"
+    },
+    {
+      "file": "data/raw/binance/BTCUSDT/5m/2026-05.csv",
+      "rows": 8928,
+      "first_open_time": "2026-05-01T00:00:00+00:00",
+      "last_open_time": "2026-05-31T23:55:00+00:00",
+      "sha256": "b4b4dfc04b4249aa310b6667e815d77866726b8f962343c1ff464c41a8373ed6"
+    },
+    {
+      "file": "data/raw/binance/BTCUSDT/5m/2026-06.csv",
+      "rows": 8640,
+      "first_open_time": "2026-06-01T00:00:00+00:00",
+      "last_open_time": "2026-06-30T23:55:00+00:00",
+      "sha256": "14ac1a06132243faf47245ecdfcb870bc4ddb90c837c69e6cab6bb30d550f64c"
+    }
+  ]
+}
